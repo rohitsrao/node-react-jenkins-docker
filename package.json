@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rohitsrao/node-react-jenkins-docker/issues"
   },
-  "homepage": "https://github.com/rohitsrao/node-react-jenkins-docker#readme"
+  "homepage": "https://github.com/rohitsrao/node-react-jenkins-docker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
