@@ -2,7 +2,7 @@
   "name": "node-react-jenkins-docker",
   "version": "1.0.0",
   "description": "Testing CI/CD Pipeline with Jenkins, Docker for a Node + React based web app",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
@@ -21,6 +21,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6"
   }
 }
