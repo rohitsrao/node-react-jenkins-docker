@@ -6,3 +6,11 @@ test('GET / returns 200', async () => {
     .get('/')
     .expect(200);
 });
+
+test('GET / contains Calculator as title', async () => {
+  await supertest(app)
+    .get('/')
+    .then((response) => {
+      expect(response.text).toContain('<title>Calculator</title>');
+    });
+});
