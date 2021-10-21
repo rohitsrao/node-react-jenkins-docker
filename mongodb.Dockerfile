@@ -11,4 +11,4 @@ RUN apt update
 RUN apt install -y mongodb-org=5.0.2 mongodb-org-database=5.0.2 mongodb-org-server=5.0.2  \
 		mongodb-org-shell=5.0.2 mongodb-org-mongos=5.0.2 mongodb-org-tools=5.0.2
 EXPOSE 27017
-ENTRYPOINT ["/usr/bin/mongod", "-f", "/etc/mongod.conf"]
+CMD ["/usr/bin/mongod", "-f", "/etc/mongod.conf"]
