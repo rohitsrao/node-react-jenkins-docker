@@ -1,0 +1,24 @@
+version: "3.9"
+
+services: 
+  db:
+    image: db
+    build: 
+      context: ./
+      dockerfile: Dockerfile.mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/rohit/Downloads/mongodb_data:/var/lib/mongodb
+
+  app:
+    image: app
+    build: 
+      context: ./
+      dockerfile: Dockerfile.node
+    ports:
+      - "3000:3000"
+    volumes: 
+      - /home/rohit/github_repos/node-react-jenkins-docker/:/usr/app
+    depends_on:
+      - db
