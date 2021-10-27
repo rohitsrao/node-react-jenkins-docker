@@ -7,9 +7,11 @@ services:
       context: ./
       dockerfile: Dockerfile.mongodb
     ports:
-      - "27017:27017"
+      - 27017:27017
     volumes:
-      - /home/rohit/Downloads/mongodb_data:/var/lib/mongodb
+      #- /home/rohit/Downloads/mongodb_data:/var/lib/mongodb
+      - /home/rohit/Downloads/mongodb_data:/data/db
+    restart: always
 
   app:
     image: app
@@ -17,8 +19,9 @@ services:
       context: ./
       dockerfile: Dockerfile.node
     ports:
-      - "3000:3000"
+      - 3000:3000
     volumes: 
       - /home/rohit/github_repos/node-react-jenkins-docker/:/usr/app
     depends_on:
       - db
+    restart: always
