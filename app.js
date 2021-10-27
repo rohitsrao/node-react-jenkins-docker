@@ -3,7 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+
 mongoose.connect('mongodb://db:27017/sumDB', {useNewUrlParser: true})
   .then(() => console.log("Database connected!"))
   .catch(err => console.log(err));
@@ -24,7 +26,15 @@ app.post('/', function (req, res){
   var num1 = Number(req.body.num1);
   var num2 = Number(req.body.num2);
   var result = num1 + num2;
-  res.send('The result of calculation is ' + result);
+
+  const sum = new Sum({
+    num1: num1,
+    num2: num2,
+    result: result,
+  });
+  sum.save();
+
+  res.render('result', {result: result});
 });
 
 module.exports = app
