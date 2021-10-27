@@ -5,9 +5,8 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 mongoose.connect('mongodb://db:27017/test', {useNewUrlParser: true})
-  .catch(err => {
-    console.log(err);
-  });
+  .then(() => console.log("Database connected!"))
+  .catch(err => console.log(err));
 
 const testSchema = new mongoose.Schema({
   num1: Number,
@@ -17,12 +16,14 @@ const testSchema = new mongoose.Schema({
 
 const Sum = mongoose.model('sum', testSchema);
 
-const sum = new Sum({
-  num1: 5,
-  num2: 3,
-  result: 8,
-});
-sum.save();
+//const sum = new Sum({
+//  num1: 5,
+//  num2: 3,
+//  result: 8,
+//});
+//sum.save()
+//  .then(() => console.log("Document saved!"))
+//  .catch((err) => console.log(err));
 
 Sum.find((err, sums) => {
   console.log(sums);
