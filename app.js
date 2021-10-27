@@ -37,4 +37,10 @@ app.post('/', function (req, res){
   res.render('result', {result: result});
 });
 
+app.get('/history', function (req, res){
+  Sum.find({}, function (err, sums){
+    res.render('history', {sums: sums});
+  })
+});
+
 module.exports = app
